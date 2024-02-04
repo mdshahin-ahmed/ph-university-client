@@ -6,9 +6,16 @@ import PhSelect from "../../../components/form/PhSelect";
 import { monthOptions } from "../../../constants/global";
 import { nameOptions } from "../../../constants/semester";
 import { academicSemesterSchema } from "../../../schemas/academicManagement.schema";
+import { useAddAcademicSemesterMutation } from "../../../redux/features/admin/academicManagement.api";
+import { toast } from "sonner";
+import { TResponse } from "../../../types/global";
 
 const CreateAcademicSemester = () => {
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const [addAcademicSemester] = useAddAcademicSemesterMutation();
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const toastId = toast.loading("Creating...");
+
     const name = nameOptions[Number(data?.name) - 1]?.label;
 
     const semesterData = {
@@ -18,7 +25,17 @@ const CreateAcademicSemester = () => {
       startMonth: data.startMonth,
       endMonth: data.endMonth,
     };
-    console.log(semesterData);
+    try {
+      const res = (await addAcademicSemester(semesterData)) as TResponse;
+      if (res.error) {
+        toast.error(res.error.data.message);
+      } else {
+        toast.success("Semester created!", { id: toastId });
+      }
+      console.log(res);
+    } catch (error) {
+      toast.error("Something went wrong", { id: toastId });
+    }
   };
 
   const currentYear = new Date().getFullYear();
