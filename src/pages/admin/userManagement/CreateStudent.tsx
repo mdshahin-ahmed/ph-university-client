@@ -11,40 +11,6 @@ import {
 } from "../../../redux/features/admin/academicManagement.api";
 import { useAddStudentMutation } from "../../../redux/features/admin/userManagement.api";
 
-const studentDummyData = {
-  password: "student123",
-  student: {
-    name: {
-      firstName: "Shahin1",
-      middleName: "Ahmed",
-      lastName: "Siam",
-    },
-    gender: "male",
-    dataOfBirth: "1990-01-01",
-    email: "shahin3@yopmail.com",
-    contactNo: "123-456-7890",
-    emergencyContactNo: "987-654-3210",
-    bloodGroup: "A+",
-    presentAddress: "123 Main Street, Cityville",
-    permanentAddress: "456 Oak Avenue, Townsville",
-    guardian: {
-      fatherName: "James Doe",
-      fatherOccupation: "Engineer",
-      fatherContactNo: "111-222-3333",
-      motherName: "Alice Doe",
-      motherOccupation: "Teacher",
-      motherContactNo: "444-555-6666",
-    },
-    localGuardian: {
-      name: "Jane Doe",
-      occupation: "Doctor",
-      contactNo: "777-888-9999",
-      address: "789 Pine Road, Villagetown",
-    },
-    admissionSemester: "65ba65e0de34d671cba49971",
-    academicDepartment: "65ba62b4de34d671cba4996c",
-  },
-};
 // This is only for development
 // Should be removed
 const studentDefaultValues = {
