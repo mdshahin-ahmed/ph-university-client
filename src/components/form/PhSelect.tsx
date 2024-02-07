@@ -9,9 +9,10 @@ type TPhSelectProps = {
     label: string;
     disabled?: boolean;
   }[];
+  disabled?: boolean;
 };
 
-const PhSelect = ({ options, label, name }: TPhSelectProps) => {
+const PhSelect = ({ options, label, name, disabled }: TPhSelectProps) => {
   return (
     <Controller
       name={name}
@@ -22,6 +23,7 @@ const PhSelect = ({ options, label, name }: TPhSelectProps) => {
             {...field}
             style={{ width: "100%" }}
             options={options}
+            disabled={disabled}
           />
           {error && (
             <>
