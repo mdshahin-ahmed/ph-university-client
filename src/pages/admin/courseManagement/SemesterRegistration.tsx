@@ -10,7 +10,7 @@ import { academicSemesterSchema } from "../../../schemas/academicManagement.sche
 
 const SemesterRegistration = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const toastId = toast.loading("Creating...");
+    const toastId = toast.loading("Creating.....");
 
     const name = nameOptions[Number(data?.name) - 1]?.label;
 
